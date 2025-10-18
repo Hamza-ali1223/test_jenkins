@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Ali - React Native Developer</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .pulse-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+            }
+        }
+        
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <div id="vanta-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-effect z-50 px-6 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">HA</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-purple-400 transition">Home</a>
+                <a href="#about" class="hover:text-purple-400 transition">About</a>
+                <a href="#skills" class="hover:text-purple-400 transition">Skills</a>
+                <a href="#stats" class="hover:text-purple-400 transition">Stats</a>
+                <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden">
+                <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="#home" class="block py-2 hover:text-purple-400 transition">Home</a>
+            <a href="#about" class="block py-2 hover:text-purple-400 transition">About</a>
+            <a href="#skills" class="block py-2 hover:text-purple-400 transition">Skills</a>
+            <a href="#stats" class="block py-2 hover:text-purple-400 transition">Stats</a>
+            <a href="#contact" class="block py-2 hover:text-purple-400 transition">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="container mx-auto text-center">
+            <div class="mb-8 floating">
+                <img src="https://static.photos/people/200x200/123" alt="Profile" class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 shadow-2xl">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 slide-in">
+                Hi 👋! I'm <span class="gradient-text">Hamza Ali</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                React Native Developer with Java Backend
+            </p>
+            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+                From Hyderabad PK 📍 | Building cross-platform mobile apps & robust backends
+            </p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <span class="px-4 py-2 bg-purple-600 rounded-full text-sm pulse-badge">Available for Freelance</span>
+                <span class="px-4 py-2 bg-gray-700 rounded-full text-sm">Open to Collaboration</span>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <a href="#contact" class="px-8 py-3 hero-gradient rounded-full font-semibold hover:opacity-90 transition">
+                    Get In Touch
+                </a>
+                <a href="#about" class="px-8 py-3 border border-purple-500 rounded-full font-semibold hover:bg-purple-500 transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Cool Animation -->
+    <section class="py-10">
+        <div class="container mx-auto px-6">
+            <div class="rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://pixabay.com/gifs/get/g1a0ced50727632a65f77ee1591e033b817e416a536008e147bfcef82231d096f9e37ce4aadc375bac2fdfc03585258bfd8052ba15dc4d079b2e062a0c669e7fa245dcdc28098eac3ddaee48e04a3a8fb.gif" alt="cool animation" class="w-full" />
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="glass-effect rounded-2xl p-8 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-400">💫 About Me</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="w-5 h-5 mr-2 text-green-400 mt-1"></i>
+                            <span>🎓 University Student exploring Full-Stack Mobile Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="w-5 h-5 mr-2 text-green-400 mt-1"></i>
+                            <span>💻 Passionate about React Native (Frontend) + Java Spring Boot (Backend)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="w-5 h-5 mr-2 text-green-400 mt-1"></i>
+                            <span>🚀 On a journey to become a skilled Freelancer</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-effect rounded-2xl p-8 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-400">🎯 What I Do</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="smartphone" class="w-5 h-5 mr-2 text-blue-400 mt-1"></i>
+                            <span>📱 Build cross-platform mobile apps with React Native</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="server" class="w-5 h-5 mr-2 text-blue-400 mt-1"></i>
+                            <span>⚙️ Develop robust backends using Java & Spring Boot</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="trending-up" class="w-5 h-5 mr-2 text-blue-400 mt-1"></i>
+                            <span>🌱 Currently sharpening my full-stack development skills</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 glass-effect rounded-2xl p-8 card-hover">
+                <h3 class="text-2xl font-semibold mb-4 text-purple-400">🏆 Recent Work</h3>
+                <p class="text-gray-300">
+                    🛠️ Developed a full application (React Native + Java Spring Boot) for a company, handling everything from frontend UI to backend integration
+                </p>
+            </div>
+            <div class="mt-8 glass-effect rounded-2xl p-8 card-hover">
+                <h3 class="text-2xl font-semibold mb-4 text-purple-400">🎯 My Goals</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start">
+                        <i data-feather="target" class="w-5 h-5 mr-2 text-yellow-400 mt-1"></i>
+                        <span>💼 Build a strong GitHub profile showcasing real-world projects</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="users" class="w-5 h-5 mr-2 text-yellow-400 mt-1"></i>
+                        <span>🤝 Collaborate, learn, and grow in the developer community</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Skills & Technologies</h2>
+            <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-6">
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=figma" height="40" alt="figma" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=firebase" height="40" alt="firebase" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=github" height="40" alt="github" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=git" height="40" alt="git" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=gradle" height="40" alt="gradle" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=idea" height="40" alt="intellijidea" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=java" height="40" alt="java" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=md" height="40" alt="markdown" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=notion" height="40" alt="notion" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=redux" height="40" alt="redux" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=react" height="40" alt="react" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=spring" height="40" alt="spring" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=svg" height="40" alt="svg" />
+                </div>
+                <div class="skill-icon flex justify-center items-center p-4 glass-effect rounded-xl">
+                    <img src="https://skillicons.dev/icons?i=vscode" height="40" alt="vscode" />
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">GitHub Statistics</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <img src="https://github-readme-stats.vercel.app/api?username=Hamza-ali1223&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=radical&locale=en&hide_border=true" alt="stats graph" class="w-full" />
+                </div>
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <img src="https://streak-stats.demolab.com?user=Hamza-ali1223&locale=en&mode=daily&theme=radical&hide_border=true&border_radius=5" alt="streak graph" class="w-full" />
+                </div>
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Hamza-ali1223&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=radical&hide_border=true" alt="languages graph" class="w-full" />
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Get In Touch</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-gray-300 mb-8">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:tenacioushamza@gmail.com" class="flex items-center space-x-2 px-6 py-3 bg-red-600 rounded-full hover:bg-red-700 transition">
+                        <i data-feather="mail" class="w-5 h-5"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/hamza-ali-notion-obsidian/" target="_blank" class="flex items-center space-x-2 px-6 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">
+                © 2024 Hamza Ali. All rights reserved. | Built with ❤️ and React Native
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Vanta.js Globe Background
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x667eea,
+            color2: 0x764ba2,
+            size: 0.80,
+            backgroundColor: 0x111827
+        });
+        
+        // Feather Icons
+        feather.replace();
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add animation to skill icons on scroll
+        const skillIcons = document.querySelectorAll('.skill-icon');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'scale(1)';
+                    }, index * 50);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        skillIcons.forEach(icon => {
+            icon.style.opacity = '0';
+            icon.style.transform = 'scale(0.5)';
+            icon.style.transition = 'all 0.5s ease';
+            skillObserver.observe(icon);
+        });
+        
+        // Dynamic navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-gray-900', 'bg-opacity-95');
+            } else {
+                nav.classList.remove('bg-gray-900', 'bg-opacity-95');
+            }
+        });
+    </script>
+</body>
+</html>
