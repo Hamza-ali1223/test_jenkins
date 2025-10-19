@@ -21,14 +21,18 @@ pipeline {
       }
     }
 
-    stage('Stop Old Container') {
-      steps {
-        echo "Stopping old container if exists..."
-        bat """
-          docker ps -q --filter "name=${CONTAINER_NAME}" | findstr . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || echo No old container
-        """
-      }
-    }
+   stage('Stop Old Container') {
+  steps {
+    echo "Stopping old container if exists..."
+    // This command will not fail even if no container exists
+    bat """
+      for /f "tokens=*" %%i in ('docker ps -q -f "name=${CONTAINER_NAME}"') do docker stop %%i
+      for /f "tokens=*" %%i in ('docker ps -aq -f "name=${CONTAINER_NAME}"') do docker rm %%i
+      echo No old container or removed successfully
+    """
+  }
+}
+
 
     stage('Run New Container') {
       steps {
